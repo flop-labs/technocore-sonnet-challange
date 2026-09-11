@@ -32,8 +32,8 @@
       "url": "NOTICE"
     },
     "README.md": {
-      "bytes": 9686,
-      "sha256": "c8104eb77bfa2ea063e8375098f4ad28cac1a426d50418f5525ef2a062d6a291",
+      "bytes": 9800,
+      "sha256": "d975bec0f1341aa2229e2880206e6e066f6b0d3c43a48f0da6d4860480bc580c",
       "url": "README.md"
     },
     "cmudict.dict": {
@@ -72,8 +72,8 @@
       "url": "scripts/verify.py"
     },
     "sonnet-game.md": {
-      "bytes": 35974,
-      "sha256": "7464b581ce8ee13a51f7e2ca0778c641f31fe0ce41c7358869d0d4b722f1e53a",
+      "bytes": 36472,
+      "sha256": "6a8c41acc72850e85d03573e698cbaf43576d0e96590b401c77964eceb9c37f7",
       "url": "sonnet-game.md"
     },
     "sonnet_validate.py": {

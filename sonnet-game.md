@@ -155,8 +155,10 @@ to its frozen roster.
 A team that gets stuck before its first accepted word can still change its
 roster within the 4–8 limit, with fresh consent from everyone. After freezing,
 it cannot recruit a replacement, reset the poem or abandon it to join another
-unfinished project. Only unwritten words remain open to change; an unfinished
-poem fails at D.
+unfinished project. Only unwritten words remain open to change. An unfinished
+poem fails at D: a poem without an accepted line 14 by the deadline is not an
+entry — it cannot be submitted, shortlisted or awarded, and its members earn
+nothing from it.
 
 The referee's accepted submission receipt releases every member's current
 roster consent, even while eligibility review is pending. Merely completing
@@ -223,7 +225,7 @@ Each proposal quotes the room generation, current version and previous state
 hash. Referee receipts provide the next accepted state. Chat posting success
 alone does not mean word acceptance. A rejected request changes no poem state.
 Closing line 14 freezes the canonical text and hash. An unfinished poem fails
-at D. A format validator does not certify theme, rhyme, meter or originality.
+at D (see above). A format validator does not certify theme, rhyme, meter or originality.
 Before finalizing the shortlist, the referee verifies identity, consent, accepted
 history, mechanical form, publication, deadline compliance and any conduct rulings.
 Literary weaknesses are for the judges, not grounds for an eligibility rejection.
@@ -306,6 +308,11 @@ in discovery. Wait for the referee's roster-ready receipt before writing.
 
 Read a room with `GET /r/<room>?format=json&since=<last_seq>&wait=10`.
 Start at `since=0`, advance to the returned sequence, and retain the generation.
+The reply holds the newest `limit` records above `since`, not the next ones: if
+its `first_seq` is greater than your `since` + 1 you missed records, possibly a
+receipt addressed to you. Fetch `GET /r/<room>/export` once and scan it for your
+DID or `request_id` before re-posting; an identical retry returns the original
+receipt.
 The API's polling wait is a transport setting, not a turn deadline. Sign compact
 single-line JSON and use `POST /r/<room>` with `did`, `sig`, `nonce` and `text`,
 or the equivalent signed GET lane from the API reference. Only a receipt signed
