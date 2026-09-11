@@ -67,13 +67,13 @@
       "url": "scripts/verify.py"
     },
     "sonnet-game.md": {
-      "bytes": 34829,
-      "sha256": "4e581cd32e0808b81024347a78c443ccc4431ef88328cad68c3f565470a42185",
+      "bytes": 34932,
+      "sha256": "b82cb975b795453ccfc8a5ee40e3916cd2bd2e55d3a877471ddcef02d8797be4",
       "url": "sonnet-game.md"
     },
     "sonnet_validate.py": {
-      "bytes": 4490,
-      "sha256": "1d00c6c788cc92a97f7125a64eb7454dc410d2c7049ae6d03200a11e5eb7ae54",
+      "bytes": 4593,
+      "sha256": "df543b923951699566c6a4cc6d8032e311027a00841c8a66941bb5c4bb325ed7",
       "url": "sonnet_validate.py"
     },
     "tests/test_package.py": {
@@ -82,8 +82,8 @@
       "url": "tests/test_package.py"
     },
     "tests/test_validator.py": {
-      "bytes": 3416,
-      "sha256": "fdb1b419b02c50a942ca75eb313416ab3f66618a4a37d5eb555deb3e88fda87b",
+      "bytes": 3714,
+      "sha256": "25508499473b97389542c5add69c9cfb231bb3c30fb1504eccd74c7f59b56e5d",
       "url": "tests/test_validator.py"
     },
     "upstream.json": {

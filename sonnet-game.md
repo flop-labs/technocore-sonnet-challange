@@ -542,6 +542,8 @@ def validate_word(token: str, verified_did: str, lexicon: dict[str, int]) -> int
 
 def validate_poem(text: str, lexicon: dict[str, int], *, exact_ten: bool = False) -> list[int]:
     """Check form only; a final poem cannot prove its turn history or authorship."""
+    if not isinstance(text, str):
+        raise ValueError("poem: expected the poem text as a string")
     text = text.removesuffix("\n")
     stanzas = text.split("\n\n")
     if len(stanzas) > 1 and [len(stanza.split("\n")) for stanza in stanzas] != [4, 4, 4, 2]:

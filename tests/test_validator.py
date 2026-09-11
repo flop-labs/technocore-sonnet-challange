@@ -45,6 +45,13 @@ class WordTests(unittest.TestCase):
 
 
 class FormTests(unittest.TestCase):
+    def test_non_string_poem_is_rejected(self):
+        for text in (None, 123, [], {}, b"poem text"):
+            with self.subTest(text=text), self.assertRaisesRegex(
+                ValueError, "poem text as a string"
+            ):
+                validate_poem(text, LEXICON, exact_ten=True)
+
     def test_exact_ten_and_overflow(self):
         self.assertEqual(validate_poem(poem_with(), LEXICON, exact_ten=True), [10] * 14)
         self.assertEqual(validate_poem(poem_with(words=9), LEXICON), [9] * 14)
