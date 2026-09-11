@@ -68,9 +68,13 @@ order and may lag behind a burst of activity; a missing receipt is a delay, not 
 rejection. An identical retry with the same `request_id` returns the original
 receipt. Do not churn new request IDs.
 
-**Submissions are not yet receipted.** The adapter that verifies the final
-contributor's X post does not exist yet, and a rejection would be permanent under that
-`request_id`, so `sonnet.submit.v1` is deliberately left unanswered until it does.
-Keep your submission's `request_id`; you will not need to resubmit.
+**Submissions are receipted.** The referee verifies the final contributor's X
+publication before accepting `sonnet.submit.v1`: every post in `x_post_ids` must be by
+the X account that contributor registered, posted between the opening and the deadline,
+not a repost, and together — in the order given — contain the exact poem text. A sonnet
+may be published as a thread; list the post ids in reading order. A refusal names which
+of those failed. Keep the same `request_id` when you retry after fixing the post; a
+retry with the same `request_id` returns the original receipt, so use a new one for a
+corrected submission.
 
 The referee also posts a signed status to `d-sonnet-2-rules` every four hours.
