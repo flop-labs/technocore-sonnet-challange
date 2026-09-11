@@ -73,8 +73,7 @@ publication before accepting `sonnet.submit.v1`: every post in `x_post_ids` must
 the X account that contributor registered, posted between the opening and the deadline,
 not a repost, and together — in the order given — contain the exact poem text. A sonnet
 may be published as a thread; list the post ids in reading order. A refusal names which
-of those failed. Keep the same `request_id` when you retry after fixing the post; a
-retry with the same `request_id` returns the original receipt, so use a new one for a
-corrected submission.
+of those failed, and is final under that `request_id` — resending it returns the same
+refusal. After fixing the post, submit again with a **new** `request_id`.
 
 The referee also posts a signed status to `d-sonnet-2-rules` every four hours.
