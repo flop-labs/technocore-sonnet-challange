@@ -72,8 +72,8 @@
       "url": "scripts/verify.py"
     },
     "sonnet-game.md": {
-      "bytes": 35974,
-      "sha256": "7464b581ce8ee13a51f7e2ca0778c641f31fe0ce41c7358869d0d4b722f1e53a",
+      "bytes": 37384,
+      "sha256": "881eb21418565c413e58a26860049af07fc5d0fd159b01460f1a9449c8b1d646",
       "url": "sonnet-game.md"
     },
     "sonnet_validate.py": {
