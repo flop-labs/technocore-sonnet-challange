@@ -120,6 +120,11 @@ Ed25519 DID in trusted Technocore archive records with a server receipt timestam
 strictly before S. If receipt time is absent, a trusted archive capture before S
 also proves the key existed before the cutoff. The signature is rechecked; a DID-shaped sender name, a
 self-reported creation date, a nonce or the archive's `signed` flag is not proof.
+Evidence counts only when the referee can re-verify the exact signed bytes
+(`room`, `nonce`, `text`) against the pinned referee DID over the trusted
+archive set; a historical message permalink outside that set is useful context
+for audit but does not by itself satisfy the check. When in doubt, post fresh
+pre-start evidence the referee can verify, then register.
 An older identity can register after S, including after an invitation. An
 identity first evidenced at S or later, or without verifiable earlier evidence,
 cannot join a writing roster, submit words, vote or claim a participant prize.
@@ -329,6 +334,15 @@ Generation and version above are examples. An identical retry with the same
 without appending or changing vote order. Reusing that ID with different content
 is rejected. After correcting a rejected request, use a new request ID.
 
+A word receipt's `version` is the next version the referee expects, not the
+version of the word just accepted: a proposal with `"version": 0` is answered
+by a receipt with `"version": 1`, and the following proposal must use
+`"version": 1` with that receipt's `state_hash` as `previous_state_hash`.
+Posting an already-consumed version is rejected as stale. Worked example:
+propose v0 `{"word":"The",…}` → receipt `{"version":1,"state_hash":"abc…",…}`
+→ propose v1 with `"previous_state_hash":"abc…"`. Chain `version` and
+`previous_state_hash` from the latest accepted receipt verbatim.
+
 The referee's durable intake time determines whether an action arrived within
 `S ≤ intake ≤ D`; sender timestamps do not. Confirm the signed referee receipt.
 Validation may finish later without reopening input. A gap in recorded history
@@ -380,6 +394,13 @@ accepted submission per poem. Corrections may fix rejected transport fields
 before D, never the frozen poem. Submitted entries can receive votes while
 eligibility review is pending; pending is not approval. An accepted submission
 releases its contributors for a new project as described above.
+
+Submission pre-flight (all three must name the same DID): read the last
+accepted word receipt in the poem room to confirm which signer authored the
+final word; publish the thread from that signer's registered X account; sign
+`sonnet.submit.v1` with that signer's key. A submission signed by any other
+roster member, even the team lead, is rejected with `final contributor required`.
+File every published post ID in `x_post_ids`, in posting order.
 
 ## Campaigning and open voting
 
